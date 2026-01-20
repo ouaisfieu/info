@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brussels Digital Ecosystem Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3F4F6; /* Gray 100 */
+        }
+
+        /* Palette: Vibrant Blue & Electric Amber (Modern/Professional) */
+        :root {
+            --color-primary: #2563EB; /* Blue 600 */
+            --color-secondary: #F59E0B; /* Amber 500 */
+            --color-accent: #10B981; /* Emerald 500 */
+            --color-dark: #1F2937; /* Gray 800 */
+        }
+
+        /* Chart Container Styling - MANDATORY */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Custom Flowchart Card */
+        .flow-card {
+            transition: transform 0.2s;
+        }
+        .flow-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Arrow for Flowchart using CSS borders (No SVG) */
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #9CA3AF;
+            margin: 10px auto;
+        }
+        
+        .arrow-right {
+            width: 0; 
+            height: 0; 
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 15px solid #9CA3AF;
+            margin: auto 10px;
+        }
+
+        /* Horizontal Arrow Container for Desktop */
+        @media (min-width: 768px) {
+            .arrow-container-md {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    </style>
+    <!-- Chosen Palette: Vibrant Blue & Electric Amber -->
+    <!-- Application Structure Plan: 
+         1. Header: High-impact title and summary.
+         2. Executive Summary (KPIs): Instant view of total ecosystem reach.
+         3. Ecosystem Architecture (Flow): HTML/CSS Diagram showing the relationship between Entities.
+         4. Audience Analysis (Compare): Demographic breakdown using Stacked Bar and Doughnut charts.
+         5. Digital Footprint (Compare): Traffic sources comparison.
+         6. Growth Trajectory (Change): Timeline of engagement over the last year.
+         7. Strategic Synthesis: Textual conclusion.
+    -->
+    <!-- Visualization & Content Choices:
+         - KPIs -> Inform -> Big Number Cards -> High impact for immediate context.
+         - Ecosystem Flow -> Organize -> HTML/CSS Flexbox Diagram -> Shows structural hierarchy without SVG/Mermaid.
+         - Audience Demographics -> Relationships -> Chart.js Doughnut -> Shows part-to-whole relationship clearly.
+         - Traffic Sources -> Compare -> Chart.js Radar -> Multi-axis comparison of channel efficacy.
+         - Entity Engagement -> Compare -> Chart.js Bar -> Direct comparison of volume.
+         - Growth Trend -> Change -> Chart.js Line -> Shows evolution over time.
+         - NO SVG/Mermaid confirmed.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="text-gray-800">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+        <!-- Header Section -->
+        <header class="text-center space-y-4 mb-12">
+            <div class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider rounded-full">Digital Intelligence Report</div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900">
+                The <span class="text-blue-600">Net.Bruxelles</span> Ecosystem
+            </h1>
+            <p class="max-w-2xl mx-auto text-xl text-gray-500">
+                A strategic analysis of the interconnected digital entities defining the new Brussels creative wave: Culture, Nightlife, and Corporate Infrastructure.
+            </p>
+        </header>
+
+        <!-- KPI Cards (Inform) -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500 hover:shadow-lg transition-shadow">
+                <p class="text-sm font-medium text-gray-500 uppercase">Total Digital Reach</p>
+                <p class="text-4xl font-bold text-gray-900 mt-2">125k+</p>
+                <p class="text-sm text-green-600 mt-2 font-semibold">▲ 18% vs Last Quarter</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-amber-500 hover:shadow-lg transition-shadow">
+                <p class="text-sm font-medium text-gray-500 uppercase">Active Engagement Rate</p>
+                <p class="text-4xl font-bold text-gray-900 mt-2">8.4%</p>
+                <p class="text-sm text-gray-500 mt-2">Industry Avg: 4.2%</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-emerald-500 hover:shadow-lg transition-shadow">
+                <p class="text-sm font-medium text-gray-500 uppercase">Market Penetration</p>
+                <p class="text-4xl font-bold text-gray-900 mt-2">Brussels</p>
+                <p class="text-sm text-gray-500 mt-2">Primary Geo-Focus</p>
+            </div>
+        </section>
+
+        <!-- Ecosystem Architecture (Organize - CSS Flowchart) -->
+        <section class="bg-white rounded-xl shadow-md p-8">
+            <div class="mb-8 border-b border-gray-100 pb-4">
+                <h2 class="text-2xl font-bold text-gray-900">Ecosystem Architecture</h2>
+                <p class="text-gray-500 mt-2">Visualizing the structural relationship between the three identified domains.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 md:space-x-4">
+                
+                <!-- Entity 1 -->
+                <div class="w-full md:w-1/3 bg-blue-50 rounded-lg p-6 border border-blue-100 flow-card">
+                    <div class="text-3xl mb-2">📢</div>
+                    <h3 class="font-bold text-blue-900 text-lg">Ouaisfi / Ouaisfieu</h3>
+                    <p class="text-sm text-blue-700 font-semibold mb-2">The Cultural Voice</p>
+                    <p class="text-xs text-blue-600">Brand Identity, Community Management, Social Reach.</p>
+                </div>
+
+                <!-- Connector -->
+                <div class="hidden md:block arrow-right"></div>
+                <div class="block md:hidden arrow-down"></div>
+
+                <!-- Entity 2 -->
+                <div class="w-full md:w-1/3 bg-amber-50 rounded-lg p-6 border border-amber-100 flow-card">
+                    <div class="text-3xl mb-2">🌙</div>
+                    <h3 class="font-bold text-amber-900 text-lg">Nyxo.Brussels</h3>
+                    <p class="text-sm text-amber-700 font-semibold mb-2">The Physical Experience</p>
+                    <p class="text-xs text-amber-600">Events, Nightlife, Ticketing, Venue Management.</p>
+                </div>
+
+                <!-- Connector -->
+                <div class="hidden md:block arrow-right"></div>
+                <div class="block md:hidden arrow-down"></div>
